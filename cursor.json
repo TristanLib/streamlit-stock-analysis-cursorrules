@@ -1,0 +1,153 @@
+{
+  "rules": [
+    {
+      "pattern": "**/*.py",
+      "naming": {
+        "class": "PascalCase",
+        "function": "snake_case",
+        "variable": "snake_case",
+        "constant": "UPPER_SNAKE_CASE"
+      }
+    },
+    {
+      "pattern": "**/data/*.py",
+      "suggestions": [
+        "Use appropriate error handling for API calls",
+        "Implement retries for network failures",
+        "Log data fetching operations",
+        "Cache frequently accessed data",
+        "Use connection pooling for database operations"
+      ]
+    },
+    {
+      "pattern": "**/indicators/*.py",
+      "suggestions": [
+        "Optimize calculations for large datasets",
+        "Implement vectorized operations where possible",
+        "Cache computed indicators",
+        "Add validation for input parameters",
+        "Document the formula and logic for each indicator"
+      ]
+    },
+    {
+      "pattern": "**/ui/*.py",
+      "suggestions": [
+        "Follow Streamlit best practices",
+        "Implement proper state management",
+        "Use session state for user preferences",
+        "Optimize rendering performance",
+        "Add loading indicators for long operations"
+      ]
+    },
+    {
+      "pattern": "**/database/*.py",
+      "suggestions": [
+        "Use connection pooling",
+        "Implement proper transaction management",
+        "Add index optimization",
+        "Use parameterized queries",
+        "Handle database migrations"
+      ]
+    },
+    {
+      "pattern": "**/utils/*.py",
+      "suggestions": [
+        "Keep functions small and focused",
+        "Add comprehensive docstrings",
+        "Implement proper error handling",
+        "Add unit tests",
+        "Use type hints"
+      ]
+    },
+    {
+      "pattern": "**/tests/*.py",
+      "suggestions": [
+        "Cover edge cases",
+        "Mock external dependencies",
+        "Use appropriate test fixtures",
+        "Add performance tests",
+        "Test error handling"
+      ]
+    },
+    {
+      "pattern": "app.py",
+      "suggestions": [
+        "Implement proper logging",
+        "Add configuration management",
+        "Handle application lifecycle",
+        "Implement error boundaries",
+        "Add performance monitoring"
+      ]
+    }
+  ],
+  "dependencies": {
+    "required": [
+      "streamlit>=1.24.0",
+      "pandas>=1.5.0",
+      "plotly>=5.13.0",
+      "baostock>=0.8.8",
+      "numpy>=1.23.0",
+      "ta-lib>=0.4.24",
+      "sqlite3"
+    ],
+    "dev": [
+      "pytest>=7.0.0",
+      "black>=22.0.0",
+      "flake8>=5.0.0",
+      "mypy>=1.0.0",
+      "isort>=5.0.0"
+    ]
+  },
+  "structure": {
+    "src": {
+      "data": ["fetcher.py", "processor.py"],
+      "indicators": ["trend.py", "momentum.py", "volume.py"],
+      "ui": ["main_page.py", "analysis_page.py", "market_page.py"],
+      "database": ["models.py", "operations.py"],
+      "utils": ["helpers.py", "constants.py"]
+    },
+    "tests": {
+      "unit": ["test_*.py"],
+      "integration": ["test_*.py"]
+    },
+    "docs": ["*.md"],
+    "config": ["*.json", "*.yml"]
+  },
+  "formatting": {
+    "line_length": 88,
+    "indent": 4,
+    "quotes": "double",
+    "docstring": "google"
+  },
+  "linting": {
+    "flake8": {
+      "max-line-length": 88,
+      "ignore": ["E203", "W503"]
+    },
+    "mypy": {
+      "strict": true,
+      "ignore_missing_imports": true
+    }
+  },
+  "git": {
+    "commit_message_template": "type(scope): description",
+    "types": ["feat", "fix", "docs", "style", "refactor", "test", "chore"],
+    "scopes": ["data", "ui", "indicators", "database", "utils", "deps"]
+  },
+  "vscode": {
+    "extensions": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "streetsidesoftware.code-spell-checker",
+      "eamodio.gitlens"
+    ],
+    "settings": {
+      "python.formatting.provider": "black",
+      "python.linting.enabled": true,
+      "python.linting.flake8Enabled": true,
+      "editor.formatOnSave": true,
+      "editor.rulers": [88],
+      "files.trimTrailingWhitespace": true
+    }
+  }
+}
